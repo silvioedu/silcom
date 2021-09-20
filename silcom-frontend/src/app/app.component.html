@@ -1,0 +1,14 @@
+<p>
+  <mat-toolbar color="primary">
+   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon [matMenuTriggerFor]="belowMenu">menu</mat-icon>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item>Clientes</button>
+      <button mat-menu-item>Cadastros</button>
+    </mat-menu>
+
+  </button>
+  <span class="title">Manager</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+</p>
