@@ -15,8 +15,8 @@ public interface ProdutoComplementoRepository extends PagingAndSortingRepository
     @Cacheable("produtocomplementos")
     List<ProdutoComplemento> findAll();
 
-    List<ProdutoComplemento> findByNomeContaining(String nome);
-    boolean existsByNome(String nome);
-    boolean existsBySigla(String sigla);
+    List<ProdutoComplemento> findByNomeContainingIgnoreCase(String nome);
+    boolean existsByNomeIgnoreCase(String nome);
+    boolean existsBySiglaIgnoreCase(String sigla);
     Optional<ProdutoComplemento> findByNome(String nome);
 }

@@ -37,7 +37,7 @@ public class ProdutoComplementoService {
     }
     
     public List<ProdutoComplemento> findByNomeContaining(final String nome) {
-        var produtoComplementos = produtoComplementoRepository.findByNomeContaining(nome);
+        var produtoComplementos = produtoComplementoRepository.findByNomeContainingIgnoreCase(nome);
         if (produtoComplementos.isEmpty()) {
             throw new ResourceNotFoundException(
                 String.format(NOME_NOT_FOUND, nome)
@@ -49,8 +49,8 @@ public class ProdutoComplementoService {
     @Transactional
     public ProdutoComplemento insert(final ProdutoComplemento produtoComplemento) {
         var produtoComplementoFormatado = this.formatObject(produtoComplemento);
-        if (produtoComplementoRepository.existsByNome(produtoComplemento.getNome()) ||
-            produtoComplementoRepository.existsBySigla(produtoComplemento.getSigla())) {
+        if (produtoComplementoRepository.existsByNomeIgnoreCase(produtoComplemento.getNome()) ||
+            produtoComplementoRepository.existsBySiglaIgnoreCase(produtoComplemento.getSigla())) {
             throw new DuplicateKeyException(
                 String.format(ALREADY_EXISTS, produtoComplemento.getNome(), produtoComplemento.getSigla()));
         }
@@ -67,9 +67,9 @@ public class ProdutoComplementoService {
         var produtoComplementoFormatado = this.formatObject(produtoComplemento);
         var produtoComplementoRecovered = this.findById(id);
         if ((!produtoComplementoRecovered.getNome().equals(produtoComplementoFormatado.getNome()) &&
-            produtoComplementoRepository.existsByNome(produtoComplemento.getNome()) ) ||
+            produtoComplementoRepository.existsByNomeIgnoreCase(produtoComplemento.getNome()) ) ||
             (!produtoComplementoRecovered.getSigla().equals(produtoComplementoFormatado.getSigla()) &&
-            produtoComplementoRepository.existsBySigla(produtoComplemento.getSigla()))) {
+            produtoComplementoRepository.existsBySiglaIgnoreCase(produtoComplemento.getSigla()))) {
                 throw new DuplicateKeyException(
                     String.format(ALREADY_EXISTS, produtoComplemento.getNome(), produtoComplemento.getSigla()));   
         }
