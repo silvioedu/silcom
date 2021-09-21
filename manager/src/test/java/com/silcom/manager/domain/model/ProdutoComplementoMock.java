@@ -2,7 +2,7 @@ package com.silcom.manager.domain.model;
 
 import java.time.OffsetDateTime;
 
-import com.silcom.manager.api.dto.ProdutoComplementoInputDTO;
+import com.silcom.manager.api.dto.input.ProdutoComplementoInputDTO;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;

@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.hasKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.silcom.manager.api.dto.RamoInputDTO;
+import com.silcom.manager.api.dto.input.RamoInputDTO;
 import com.silcom.manager.domain.model.RamoMock;
 
 import org.flywaydb.core.Flyway;

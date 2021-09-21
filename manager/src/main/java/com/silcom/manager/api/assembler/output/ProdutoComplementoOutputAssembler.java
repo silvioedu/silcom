@@ -3,7 +3,7 @@ package com.silcom.manager.api.assembler.output;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.silcom.manager.api.dto.ProdutoComplementoOutputDTO;
+import com.silcom.manager.api.dto.output.ProdutoComplementoOutputDTO;
 import com.silcom.manager.domain.model.ProdutoComplemento;
 
 import org.modelmapper.ModelMapper;

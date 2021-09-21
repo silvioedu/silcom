@@ -2,7 +2,7 @@ package com.silcom.manager.api.assembler.input;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.silcom.manager.api.dto.ProdutoComplementoInputDTO;
+import com.silcom.manager.api.dto.input.ProdutoComplementoInputDTO;
 import com.silcom.manager.domain.model.ProdutoComplemento;
 import com.silcom.manager.domain.model.ProdutoComplementoMock;
 

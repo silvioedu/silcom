@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.silcom.manager.api.dto.ProdutoComplementoOutputDTO;
+import com.silcom.manager.api.dto.output.ProdutoComplementoOutputDTO;
 import com.silcom.manager.domain.model.ProdutoComplemento;
 import com.silcom.manager.domain.model.ProdutoComplementoMock;
 

@@ -6,8 +6,8 @@ import javax.validation.Valid;
 
 import com.silcom.manager.api.assembler.input.RamoInputAssembler;
 import com.silcom.manager.api.assembler.output.RamoOutputAssembler;
-import com.silcom.manager.api.dto.RamoInputDTO;
-import com.silcom.manager.api.dto.RamoOutputDTO;
+import com.silcom.manager.api.dto.input.RamoInputDTO;
+import com.silcom.manager.api.dto.output.RamoOutputDTO;
 import com.silcom.manager.domain.model.Ramo;
 import com.silcom.manager.domain.service.RamoService;
 

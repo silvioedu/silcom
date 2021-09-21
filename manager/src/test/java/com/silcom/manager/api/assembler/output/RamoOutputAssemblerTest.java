@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.silcom.manager.api.dto.RamoOutputDTO;
+import com.silcom.manager.api.dto.output.RamoOutputDTO;
 import com.silcom.manager.domain.model.Ramo;
 import com.silcom.manager.domain.model.RamoMock;
 

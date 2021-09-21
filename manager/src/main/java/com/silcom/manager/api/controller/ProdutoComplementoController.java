@@ -6,8 +6,8 @@ import javax.validation.Valid;
 
 import com.silcom.manager.api.assembler.input.ProdutoComplementoInputAssembler;
 import com.silcom.manager.api.assembler.output.ProdutoComplementoOutputAssembler;
-import com.silcom.manager.api.dto.ProdutoComplementoInputDTO;
-import com.silcom.manager.api.dto.ProdutoComplementoOutputDTO;
+import com.silcom.manager.api.dto.input.ProdutoComplementoInputDTO;
+import com.silcom.manager.api.dto.output.ProdutoComplementoOutputDTO;
 import com.silcom.manager.domain.model.ProdutoComplemento;
 import com.silcom.manager.domain.service.ProdutoComplementoService;
 

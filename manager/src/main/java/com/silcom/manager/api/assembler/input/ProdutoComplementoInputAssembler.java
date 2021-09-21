@@ -1,6 +1,6 @@
 package com.silcom.manager.api.assembler.input;
 
-import com.silcom.manager.api.dto.ProdutoComplementoInputDTO;
+import com.silcom.manager.api.dto.input.ProdutoComplementoInputDTO;
 import com.silcom.manager.domain.model.ProdutoComplemento;
 
 import org.modelmapper.ModelMapper;
