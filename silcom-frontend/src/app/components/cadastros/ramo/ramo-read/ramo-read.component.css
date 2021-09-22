@@ -1,0 +1,22 @@
+table {
+  margin-top: 30px;
+  padding: 20px 20px;
+  width: calc(100% - 40px);
+}
+
+.edit {
+  margin-right: 10px;
+}
+
+.edit > i {
+  color: #E6BB43;
+}
+
+.delete > i {
+  color: #F25A2E;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
