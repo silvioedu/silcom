@@ -34,4 +34,8 @@ public class ProdutoCor {
     @CreationTimestamp
     private OffsetDateTime dataAtualizacao;
 
+    public void format() {
+        this.sigla = this.sigla.toUpperCase();
+    }
+
 }

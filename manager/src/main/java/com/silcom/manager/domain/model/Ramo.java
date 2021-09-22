@@ -33,4 +33,8 @@ public class Ramo {
     @UpdateTimestamp
     private OffsetDateTime dataAtualizacao;
 
+    public void format() {
+        this.nome = this.nome.toUpperCase();
+    }
+
 }

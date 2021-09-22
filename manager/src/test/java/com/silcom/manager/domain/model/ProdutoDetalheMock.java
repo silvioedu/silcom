@@ -4,7 +4,6 @@ import java.time.OffsetDateTime;
 
 import com.silcom.manager.api.dto.input.ProdutoDetalheInputDTO;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 
 public class ProdutoDetalheMock {
@@ -12,8 +11,8 @@ public class ProdutoDetalheMock {
     public static ProdutoDetalhe getInstance() {
         ProdutoDetalhe produtoDetalhe = new ProdutoDetalhe();
         produtoDetalhe.setId(RandomUtils.nextLong(1, 24));
-        produtoDetalhe.setNome("Nome ProdutoDetalhe " + produtoDetalhe.getId());
-        produtoDetalhe.setSigla(RandomStringUtils.randomAlphabetic(1));
+        produtoDetalhe.setNome("Nome Detalhe " + produtoDetalhe.getId());
+        produtoDetalhe.setSigla("Z");
         produtoDetalhe.setDataCriacao(OffsetDateTime.now());
 
         return produtoDetalhe;
@@ -25,6 +24,14 @@ public class ProdutoDetalheMock {
         input.setNome(produtoDetalhe.getNome());
         input.setSigla(produtoDetalhe.getSigla());
         return input;
+    }
+
+    public static ProdutoDetalhe getRealInstance() {
+        ProdutoDetalhe produtoDetalhe = new ProdutoDetalhe();
+        produtoDetalhe.setId(1L);
+        produtoDetalhe.setNome("Cadarço");
+        produtoDetalhe.setSigla("A");
+        return produtoDetalhe;
     }
 
 }

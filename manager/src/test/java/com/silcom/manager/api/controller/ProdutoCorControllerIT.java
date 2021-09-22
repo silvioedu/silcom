@@ -113,6 +113,7 @@ class ProdutoCorControllerIT {
     @Test
     void shouldReturn201_WhenReceivePOST_withValidInput() {
         ProdutoCorInputDTO input = ProdutoCorMock.getInputInstance();
+        input.setSigla("D");
 
         RestAssured
             .given()
@@ -191,10 +192,10 @@ class ProdutoCorControllerIT {
     }
 
     @Test
-    void shouldReturn404_WhenReceiveDELETE_withFoundId() {
+    void shouldReturn204_WhenReceiveDELETE_withFoundId() {
         RestAssured
             .given()
-                .pathParam("id", 4)
+                .pathParam("id", 12)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
             .when()
@@ -203,6 +204,20 @@ class ProdutoCorControllerIT {
                 .statusCode(HttpStatus.NO_CONTENT.value());
     }
 
+    @Test
+    void shouldReturn409_WhenReceiveDELETE_withInUseId() {
+        RestAssured
+            .given()
+                .pathParam("id", 5)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+            .when()
+                .delete("/{id}")
+            .then()
+                .statusCode(HttpStatus.CONFLICT.value());
+    }
+
+    @Test
     void shouldReturn200_whenReceivePUT_withValidInput() {
         ProdutoCorInputDTO input = ProdutoCorMock.getInputInstance();
         input.setNome("Cinza");
@@ -253,7 +268,7 @@ class ProdutoCorControllerIT {
                 .statusCode(HttpStatus.CONFLICT.value());
     }
 
-
+    @Test
     void shouldReturn404_whenReceivePUT_withInvalidInput() {
         ProdutoCorInputDTO input = ProdutoCorMock.getInputInstance();
         input.setNome("AUTO POSTO");
@@ -267,7 +282,7 @@ class ProdutoCorControllerIT {
             .when()
                 .put("/{id}")
             .then()
-                .statusCode(HttpStatus.CONFLICT.value());
+                .statusCode(HttpStatus.NOT_FOUND.value());
     }
 
 }

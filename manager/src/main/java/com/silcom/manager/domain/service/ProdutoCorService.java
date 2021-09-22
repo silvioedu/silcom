@@ -6,9 +6,11 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.silcom.manager.domain.exception.DuplicateKeyException;
+import com.silcom.manager.domain.exception.ResourceInUseException;
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
 import com.silcom.manager.domain.model.ProdutoCor;
 import com.silcom.manager.domain.repository.ProdutoCorRepository;
+import com.silcom.manager.domain.repository.ProdutoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,12 +20,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProdutoCorService {
     
+    private static final String ID_IN_USE = "Produto cor id %d em uso";
     private static final String ALREADY_EXISTS = "Produto cor nome '%s' ou sigla '%s' já existe";
     private static final String NOME_NOT_FOUND = "Não foram encontrados cpres de produto com o nome '%s'";
     private static final String ID_NOT_FOUND = "Produto cor id %d não encontrado";
 
     @Autowired
     private ProdutoCorRepository produtoCorRepository;
+
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
     public Page<ProdutoCor> findAll(Pageable pageable) {
         return produtoCorRepository.findAll(pageable);
@@ -48,7 +54,9 @@ public class ProdutoCorService {
 
     @Transactional
     public ProdutoCor insert(final ProdutoCor produtoCor) {
-        var produtoCorFormatado = this.formatObject(produtoCor);
+        var produtoCorFormatado = produtoCor;
+        produtoCorFormatado.format();
+
         if (produtoCorRepository.existsByNomeIgnoreCase(produtoCor.getNome()) ||
             produtoCorRepository.existsBySiglaIgnoreCase(produtoCor.getSigla())) {
             throw new DuplicateKeyException(
@@ -59,12 +67,18 @@ public class ProdutoCorService {
 
     @Transactional
     public void delete(final Long id) {
+        if (produtoRepository.existsByTipoId(id)) {
+            throw new ResourceInUseException(
+                String.format(ID_IN_USE, id));
+        }
         produtoCorRepository.delete(this.findById(id));
     }
 
     @Transactional
     public ProdutoCor update(final Long id, final ProdutoCor produtoCor) {
-        var produtoCorFormatado = this.formatObject(produtoCor);
+        var produtoCorFormatado = produtoCor;
+        produtoCorFormatado.format();
+        
         var produtoCorRecovered = this.findById(id);
         if ((!produtoCorRecovered.getNome().equals(produtoCorFormatado.getNome()) &&
             produtoCorRepository.existsByNomeIgnoreCase(produtoCor.getNome()) ) ||
@@ -77,11 +91,6 @@ public class ProdutoCorService {
         produtoCorFormatado.setDataCriacao(produtoCorRecovered.getDataCriacao());
         produtoCorFormatado.setDataAtualizacao(OffsetDateTime.now());
         return produtoCorRepository.save(produtoCorFormatado);
-    }
-
-    private ProdutoCor formatObject(final ProdutoCor produtoCor) {
-        produtoCor.setSigla(produtoCor.getSigla().toUpperCase());
-        return produtoCor;
     }
 
 }

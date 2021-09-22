@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 import com.silcom.manager.domain.exception.DuplicateKeyException;
+import com.silcom.manager.domain.exception.ResourceInUseException;
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
 
 import org.springframework.http.HttpStatus;
@@ -36,6 +37,21 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         Problem problem = createProblemBuilder(
             ProblemTypeEnum.DUPLICATE_KEY.getStatus(), 
             ProblemTypeEnum.DUPLICATE_KEY,
+            ex.getMessage(),
+            null)
+            .build();
+
+		return ResponseEntity
+            .status(problem.getStatus())
+            .body(problem);
+	}          
+
+    @ExceptionHandler({ ResourceInUseException.class })
+	public ResponseEntity<Object> handleApiInUseException(RuntimeException ex) {
+
+        Problem problem = createProblemBuilder(
+            ProblemTypeEnum.RESOURCE_IN_USE.getStatus(), 
+            ProblemTypeEnum.RESOURCE_IN_USE,
             ex.getMessage(),
             null)
             .build();

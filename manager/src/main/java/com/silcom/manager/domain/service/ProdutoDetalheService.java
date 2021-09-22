@@ -6,9 +6,11 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.silcom.manager.domain.exception.DuplicateKeyException;
+import com.silcom.manager.domain.exception.ResourceInUseException;
 import com.silcom.manager.domain.exception.ResourceNotFoundException;
 import com.silcom.manager.domain.model.ProdutoDetalhe;
 import com.silcom.manager.domain.repository.ProdutoDetalheRepository;
+import com.silcom.manager.domain.repository.ProdutoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,12 +20,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProdutoDetalheService {
     
+    private static final String ID_IN_USE = "Produto fabricante id %d em uso";
     private static final String ALREADY_EXISTS = "Produto detalhe nome '%s' ou sigla '%s' já existe";
     private static final String NOME_NOT_FOUND = "Não foram encontrados cpres de produto com o nome '%s'";
     private static final String ID_NOT_FOUND = "Produto detalhe id %d não encontrado";
 
     @Autowired
     private ProdutoDetalheRepository produtoDetalheRepository;
+
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
     public Page<ProdutoDetalhe> findAll(Pageable pageable) {
         return produtoDetalheRepository.findAll(pageable);
@@ -48,7 +54,9 @@ public class ProdutoDetalheService {
 
     @Transactional
     public ProdutoDetalhe insert(final ProdutoDetalhe produtoDetalhe) {
-        var produtoDetalheFormatado = this.formatObject(produtoDetalhe);
+        var produtoDetalheFormatado = produtoDetalhe;
+        produtoDetalheFormatado.format();
+
         if (produtoDetalheRepository.existsByNomeIgnoreCase(produtoDetalhe.getNome()) ||
             produtoDetalheRepository.existsBySiglaIgnoreCase(produtoDetalhe.getSigla())) {
             throw new DuplicateKeyException(
@@ -59,12 +67,18 @@ public class ProdutoDetalheService {
 
     @Transactional
     public void delete(final Long id) {
+        if (produtoRepository.existsByTipoId(id)) {
+            throw new ResourceInUseException(
+                String.format(ID_IN_USE, id));
+        }
         produtoDetalheRepository.delete(this.findById(id));
     }
 
     @Transactional
     public ProdutoDetalhe update(final Long id, final ProdutoDetalhe produtoDetalhe) {
-        var produtoDetalheFormatado = this.formatObject(produtoDetalhe);
+        var produtoDetalheFormatado = produtoDetalhe;
+        produtoDetalheFormatado.format();
+        
         var produtoDetalheRecovered = this.findById(id);
         if ((!produtoDetalheRecovered.getNome().equals(produtoDetalheFormatado.getNome()) &&
             produtoDetalheRepository.existsByNomeIgnoreCase(produtoDetalhe.getNome()) ) ||
@@ -77,11 +91,6 @@ public class ProdutoDetalheService {
         produtoDetalheFormatado.setDataCriacao(produtoDetalheRecovered.getDataCriacao());
         produtoDetalheFormatado.setDataAtualizacao(OffsetDateTime.now());
         return produtoDetalheRepository.save(produtoDetalheFormatado);
-    }
-
-    private ProdutoDetalhe formatObject(final ProdutoDetalhe produtoDetalhe) {
-        produtoDetalhe.setSigla(produtoDetalhe.getSigla().toUpperCase());
-        return produtoDetalhe;
     }
 
 }

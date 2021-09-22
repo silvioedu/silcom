@@ -113,6 +113,7 @@ class ProdutoComplementoControllerIT {
     @Test
     void shouldReturn201_WhenReceivePOST_withValidInput() {
         ProdutoComplementoInputDTO input = ProdutoComplementoMock.getInputInstance();
+        input.setSigla("I");
 
         RestAssured
             .given()
@@ -191,10 +192,10 @@ class ProdutoComplementoControllerIT {
     }
 
     @Test
-    void shouldReturn404_WhenReceiveDELETE_withFoundId() {
+    void shouldReturn204_WhenReceiveDELETE_withFoundId() {
         RestAssured
             .given()
-                .pathParam("id", 6)
+                .pathParam("id", 17)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
             .when()
@@ -203,6 +204,23 @@ class ProdutoComplementoControllerIT {
                 .statusCode(HttpStatus.NO_CONTENT.value());
     }
 
+    @Test
+    void shouldReturn409_WhenReceiveDELETE_withInUseId() {
+        RestAssured
+            .given()
+                .pathParam("id", 8)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+            .when()
+                .delete("/{id}")
+            .then()
+                .statusCode(HttpStatus.CONFLICT.value());
+    }
+
+
+
+
+    @Test
     void shouldReturn200_whenReceivePUT_withValidInput() {
         ProdutoComplementoInputDTO input = ProdutoComplementoMock.getInputInstance();
         input.setNome("NOVO");
@@ -222,7 +240,7 @@ class ProdutoComplementoControllerIT {
     @Test
     void shouldReturn409_whenReceivePUT_withDuplicateNomeInput() {
         ProdutoComplementoInputDTO input = ProdutoComplementoMock.getInputInstance();
-        input.setNome("Monodensidade Bico PVC");
+        input.setNome("DUB");
 
         RestAssured
             .given()
@@ -239,7 +257,7 @@ class ProdutoComplementoControllerIT {
     @Test
     void shouldReturn409_whenReceivePUT_withDuplicateSiglaInput() {
         ProdutoComplementoInputDTO input = ProdutoComplementoMock.getInputInstance();
-        input.setSigla("4");;
+        input.setSigla("8");;
 
         RestAssured
             .given()
@@ -253,7 +271,7 @@ class ProdutoComplementoControllerIT {
                 .statusCode(HttpStatus.CONFLICT.value());
     }
 
-
+    @Test
     void shouldReturn404_whenReceivePUT_withInvalidInput() {
         ProdutoComplementoInputDTO input = ProdutoComplementoMock.getInputInstance();
         input.setNome("AUTO POSTO");
@@ -267,7 +285,7 @@ class ProdutoComplementoControllerIT {
             .when()
                 .put("/{id}")
             .then()
-                .statusCode(HttpStatus.CONFLICT.value());
+                .statusCode(HttpStatus.NOT_FOUND.value());
     }
 
 }

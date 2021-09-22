@@ -12,7 +12,7 @@ public class ProdutoComplementoMock {
     public static ProdutoComplemento getInstance() {
         ProdutoComplemento produtoComplemento = new ProdutoComplemento();
         produtoComplemento.setId(RandomUtils.nextLong(1, 24));
-        produtoComplemento.setNome("Nome ProdutoComplemento " + produtoComplemento.getId());
+        produtoComplemento.setNome("Nome Complemento " + produtoComplemento.getId());
         produtoComplemento.setSigla(RandomStringUtils.randomAlphabetic(1));
         produtoComplemento.setDataCriacao(OffsetDateTime.now());
 
@@ -25,6 +25,14 @@ public class ProdutoComplementoMock {
         input.setNome(produtoComplemento.getNome());
         input.setSigla(produtoComplemento.getSigla());
         return input;
+    }
+
+    public static ProdutoComplemento getRealInstance() {
+        ProdutoComplemento produtoComplemento = new ProdutoComplemento();
+        produtoComplemento.setId(6L);
+        produtoComplemento.setNome("Monodensidade Sem bico");
+        produtoComplemento.setSigla("0");
+        return produtoComplemento;
     }
 
 }

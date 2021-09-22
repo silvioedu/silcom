@@ -48,7 +48,9 @@ public class RamoService {
 
     @Transactional
     public Ramo insert(final Ramo ramo) {
-        var ramoFormatado = this.formatObject(ramo);
+        var ramoFormatado = ramo;
+        ramo.format();
+
         if (ramoRepository.existsByNome(ramo.getNome())) {
             throw new DuplicateKeyException(
                 String.format(ALREADY_EXISTS, ramo.getNome()));
@@ -63,7 +65,9 @@ public class RamoService {
 
     @Transactional
     public Ramo update(final Long id, final Ramo ramo) {
-        var ramoFormatado = this.formatObject(ramo);
+        var ramoFormatado = ramo;
+        ramo.format();
+        
         var ramoRecovered = this.findById(id);
         if (!ramoRecovered.getNome().equals(ramoFormatado.getNome()) &&
             ramoRepository.existsByNome(ramo.getNome())) {
@@ -74,11 +78,6 @@ public class RamoService {
         ramoFormatado.setDataCriacao(ramoRecovered.getDataCriacao());
         ramoFormatado.setDataAtualizacao(OffsetDateTime.now());
         return ramoRepository.save(ramoFormatado);
-    }
-
-    private Ramo formatObject(final Ramo ramo) {
-        ramo.setNome(ramo.getNome().toUpperCase());
-        return ramo;
     }
 
 }

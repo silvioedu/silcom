@@ -33,4 +33,8 @@ public class ProdutoComplemento {
     
     @CreationTimestamp
     private OffsetDateTime dataAtualizacao;
+
+    public void format() {
+        this.sigla = this.sigla.toUpperCase();
+    }
 }

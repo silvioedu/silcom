@@ -12,7 +12,7 @@ public class ProdutoFabricanteMock {
     public static ProdutoFabricante getInstance() {
         ProdutoFabricante produtoFabricante = new ProdutoFabricante();
         produtoFabricante.setId(RandomUtils.nextLong(1, 24));
-        produtoFabricante.setNome("Nome ProdutoFabricante " + produtoFabricante.getId());
+        produtoFabricante.setNome("Nome Fabricante " + produtoFabricante.getId());
         produtoFabricante.setSigla(RandomStringUtils.randomAlphabetic(2));
         produtoFabricante.setDataCriacao(OffsetDateTime.now());
 
@@ -25,6 +25,14 @@ public class ProdutoFabricanteMock {
         input.setNome(produtoFabricante.getNome());
         input.setSigla(produtoFabricante.getSigla());
         return input;
+    }
+
+    public static ProdutoFabricante getRealInstance() {
+        ProdutoFabricante produtoFabricante = new ProdutoFabricante();
+        produtoFabricante.setId(1L);
+        produtoFabricante.setNome("Susa");
+        produtoFabricante.setSigla("02");
+        return produtoFabricante;
     }
 
 }

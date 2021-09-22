@@ -185,6 +185,7 @@ class RamoControllerIT {
                 .statusCode(HttpStatus.NO_CONTENT.value());
     }
 
+    @Test
     void shouldReturn200_whenReceivePUT_withValidInput() {
         RamoInputDTO input = RamoMock.getInputInstance();
         input.setNome("NOVO");
@@ -218,6 +219,7 @@ class RamoControllerIT {
                 .statusCode(HttpStatus.CONFLICT.value());
     }
 
+    @Test
     void shouldReturn404_whenReceivePUT_withInvalidInput() {
         RamoInputDTO input = RamoMock.getInputInstance();
         input.setNome("AUTO POSTO");
@@ -231,7 +233,7 @@ class RamoControllerIT {
             .when()
                 .put("/{id}")
             .then()
-                .statusCode(HttpStatus.CONFLICT.value());
+                .statusCode(HttpStatus.NOT_FOUND.value());
 
     }
 

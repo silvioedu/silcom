@@ -8,11 +8,12 @@ import lombok.Getter;
 public enum ProblemTypeEnum {
 
     INVALID_DATA(HttpStatus.BAD_REQUEST, "/invalid-data", "Invalid data"),
-    IN_USE_ENTITY(HttpStatus.BAD_REQUEST, "/entity-in-use", "Entity in use"),
     BUSINESS_ERROR(HttpStatus.BAD_REQUEST, "/business-error", "Business rule violation"),
     SYSTEM_ERROR (HttpStatus.BAD_REQUEST, "/system-error", "System-error"),
     INCOMPREHENSIBLE_MESSAGE (HttpStatus.BAD_REQUEST, "/incomprehensible-message", "Incomprehensible message"),
     INVALID_PARAMETER(HttpStatus.BAD_REQUEST, "/invalid-parameter", "Invalid parameter"),
+
+    RESOURCE_IN_USE(HttpStatus.CONFLICT, "/resource-in-use", "Resource in use"),
     DUPLICATE_KEY(HttpStatus.CONFLICT, "/duplicate-key", "Duplicate key"),
     RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "/resource-not-found", "Resource not found");
 
