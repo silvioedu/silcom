@@ -32,6 +32,6 @@ export class RamoReadComponent implements OnInit {
   }
 
   add(): void {
-    this.router.navigate(['/ramos/create'])
+    this.router.navigate(['cadastros/ramos/create'])
   }
 }

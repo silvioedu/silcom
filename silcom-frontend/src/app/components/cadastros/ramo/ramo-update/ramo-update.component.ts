@@ -31,15 +31,15 @@ export class RamoUpdateComponent implements OnInit {
     })
   }
 
-  updateRamo(): void{
+  update(): void{
     this.ramoService.update(this.ramo).subscribe(() => {
       this.messageService.showMessage("Ramo atualizado com sucesso.")
-      this.router.navigate(['/ramos'])
+      this.router.navigate(['cadastros/ramos'])
     })
   }
 
   cancel(): void{
-    this.router.navigate(['/ramos'])
+    this.router.navigate(['cadastros/ramos'])
   }
 
 }

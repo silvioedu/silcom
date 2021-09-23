@@ -9,8 +9,12 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'ramos',
+    path: 'cadastros/ramos',
     loadChildren: () => import('./components/cadastros/ramo/ramo.module').then(m => m.RamoModule)
+  },
+  {
+    path: 'cadastros/produtos/tipos',
+    loadChildren: () => import('./components/cadastros/produto/produto-tipo/produto-tipo.module').then(m => m.ProdutoTipoModule)
   }
 ];
 

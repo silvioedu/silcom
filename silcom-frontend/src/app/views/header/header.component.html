@@ -1,14 +1,18 @@
-<div>
-  <mat-toolbar color="primary" class="header" [matMenuTriggerFor]="menu">
-    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-    <span (click)="goToHome()">Manager</span>
-  </mat-toolbar>
+<mat-toolbar color="primary" class="header" [matMenuTriggerFor]="menu">
+  <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+  <span><a routerLink="/">Manager</a></span>
+</mat-toolbar>
 
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="cadastros">Cadastros</button>
-  </mat-menu>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="cadastros">Cadastros</button>
+</mat-menu>
 
-  <mat-menu #cadastros="matMenu">
-    <button mat-menu-item (click)="goToCadastroRamos()">Ramos</button>
-  </mat-menu>
-</div>
+<mat-menu #cadastros="matMenu">
+  <button mat-menu-item><a routerLink="/cadastros/ramos">Ramos</a></button>
+  <button mat-menu-item [matMenuTriggerFor]="cadastrosProdutos">Produtos</button>
+</mat-menu>
+
+<mat-menu #cadastrosProdutos="matMenu">
+  <button mat-menu-item><a routerLink="/cadastros/produtos/tipos">Tipos</a></button>
+</mat-menu>
+

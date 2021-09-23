@@ -26,15 +26,15 @@ export class RamoCreateComponent implements OnInit {
     // intentionally unscoped
   }
 
-  createRamo(): void{
+  create(): void{
     this.ramoService.create(this.ramo).subscribe(() => {
       this.messageService.showMessage('Ramo criado com sucesso')
-      this.router.navigate(['/ramos'])
+      this.router.navigate(['cadastros/ramos'])
     })
   }
 
   cancel(): void{
-    this.router.navigate(['/ramos'])
+    this.router.navigate(['cadastros/ramos'])
   }
 
 }

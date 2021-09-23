@@ -6,6 +6,10 @@ table {
   padding: 5px 10px;
 }
 
+tr.element-row:hover {
+  background: whitesmoke;
+}
+
 .edit {
   margin-right: 10px;
 }
@@ -32,7 +36,7 @@ div {
 }
 
 .filter {
-  background-color: rgba(211, 211, 211, .3);
+  background-color: whitesmoke;
 }
 
 h1 {

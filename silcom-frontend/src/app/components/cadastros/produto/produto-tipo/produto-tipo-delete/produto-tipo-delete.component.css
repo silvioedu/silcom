@@ -1,0 +1,29 @@
+input{
+  display: inline-block;
+}
+
+.actions button:nth-child(2) {
+  margin-left: 20px;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
+form {
+  margin: 20px;
+  width: calc(50%-40px);
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  margin: 10px
+}
+
+.actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}

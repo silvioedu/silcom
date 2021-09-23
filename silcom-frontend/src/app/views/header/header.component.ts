@@ -16,13 +16,4 @@ export class HeaderComponent implements OnInit {
     // intentionally unscoped
   }
 
-  goToHome() {
-    this.router.navigate([''])
-
-  }
-
-  goToCadastroRamos() {
-    this.router.navigate(['/ramos'])
-
-  }
 }
