@@ -61,4 +61,5 @@ export class ProdutoCorService {
       map(obj => obj),
       catchError(e => this.errorHandlerService.errorHandler(e))
     )
-  }}
+  }
+}

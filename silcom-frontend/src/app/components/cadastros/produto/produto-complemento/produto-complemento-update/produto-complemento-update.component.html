@@ -1,0 +1,33 @@
+<mat-card class="card">
+
+  <h1>Alterar complemento de produto</h1>
+
+  <form>
+
+      <mat-form-field>
+          <input matInput placeholder="Id" [(ngModel)]="produtoComplemento.id" name="id" disabled>
+      </mat-form-field>
+
+      <mat-form-field>
+          <input matInput placeholder="Nome" [(ngModel)]="produtoComplemento.nome" name="nome" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Sigla" [(ngModel)]="produtoComplemento.sigla" name="sigla" maxlength="01">
+      </mat-form-field>
+
+  </form>
+
+  <div class="actions">
+    <button mat-raised-button (click)="update()" color="primary">
+        Atualizar
+    </button>
+
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+  </div>
+
+</mat-card>
+
+
