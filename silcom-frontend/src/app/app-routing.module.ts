@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: () => import('./components/cadastros/ramo/ramo.module').then(m => m.RamoModule)
   },
   {
+    path: 'cadastros/produtos/fabricantes',
+    loadChildren: () => import('./components/cadastros/produto/produto-fabricante/produto-fabricante.module').then(m => m.ProdutoFabricanteModule)
+  },
+  {
     path: 'cadastros/produtos/tipos',
     loadChildren: () => import('./components/cadastros/produto/produto-tipo/produto-tipo.module').then(m => m.ProdutoTipoModule)
   }

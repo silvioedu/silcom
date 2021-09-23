@@ -1,0 +1,28 @@
+<mat-card class="card">
+
+  <h1>Adicionar fabricante de produto</h1>
+
+  <form>
+      <mat-form-field>
+          <input type="text" [(ngModel)]="produtoFabricante.nome" matInput placeholder="Nome" name="nome" maxlength="20">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" [(ngModel)]="produtoFabricante.sigla" matInput placeholder="Sigla" name="sigla" maxlength="02">
+      </mat-form-field>
+
+    </form>
+
+  <div class="actions">
+    <button mat-raised-button (click)="create()" color="primary">
+        Salvar
+    </button>
+
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+  </div>
+
+</mat-card>
+
+

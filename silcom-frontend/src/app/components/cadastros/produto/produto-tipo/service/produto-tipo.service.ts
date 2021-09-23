@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ErrorHandlerService } from 'src/app/components/shared/service/error-handler.service';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { ErrorHandlerService } from 'src/app/components/shared/service/error-handler.service';
+import { environment } from 'src/environments/environment';
+
 import { ProdutoTipoInput } from '../model/produto-tipo-input.model';
 import { ProdutoTipo } from '../model/produto-tipo.model';
 
@@ -11,7 +13,7 @@ import { ProdutoTipo } from '../model/produto-tipo.model';
 })
 export class ProdutoTipoService {
 
-  baseUrl = 'http://localhost:8080/cadastros/produtos/tipos'
+  baseUrl = `${environment.BASE_URL}cadastros/produtos/tipos`
 
   constructor(private httpClient: HttpClient,
     private errorHandlerService: ErrorHandlerService) {

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { ErrorHandlerService } from 'src/app/components/shared/service/error-handler.service';
+import { environment } from 'src/environments/environment';
 
 import { Ramo } from '../model/ramo.model';
 import { RamoInput } from './../model/ramo-input.model';
@@ -12,7 +13,7 @@ import { RamoInput } from './../model/ramo-input.model';
 })
 export class RamoService {
 
-  baseUrl = 'http://localhost:8080/cadastros/ramos'
+  baseUrl = `${environment.BASE_URL}cadastros/ramos`
 
   constructor(private httpClient: HttpClient,
     private errorHandlerService: ErrorHandlerService) {

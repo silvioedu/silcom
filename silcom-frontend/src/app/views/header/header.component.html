@@ -8,11 +8,12 @@
 </mat-menu>
 
 <mat-menu #cadastros="matMenu">
-  <button mat-menu-item><a routerLink="/cadastros/ramos">Ramos</a></button>
   <button mat-menu-item [matMenuTriggerFor]="cadastrosProdutos">Produtos</button>
+  <button mat-menu-item><a routerLink="/cadastros/ramos">Ramos</a></button>
 </mat-menu>
 
 <mat-menu #cadastrosProdutos="matMenu">
+  <button mat-menu-item><a routerLink="/cadastros/produtos/fabricantes">Fabricantes</a></button>
   <button mat-menu-item><a routerLink="/cadastros/produtos/tipos">Tipos</a></button>
 </mat-menu>
 
