@@ -1,6 +1,6 @@
 import { ProdutoCor } from "./produto-cor.model";
 
-export interface ProdutoTipoPage {
+export interface ProdutoCorPage {
   content: ProdutoCor[],
   pageable: any,
   totalElements: number,

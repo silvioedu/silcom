@@ -20,7 +20,7 @@ export class ErrorHandlerService {
 
     const msg = `Ocorreu um erro ${erro.status}-${erro.detail}. ${fields}`
 
-    this.messageService.showMessage(msg, false)
+    this.messageService.showMessage(msg, true)
     return EMPTY
   }
 

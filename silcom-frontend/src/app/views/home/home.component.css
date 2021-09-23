@@ -1,3 +1,36 @@
+* {
+  margin: 0;
+}
+
 body {
-  height: calc(100% - 208px);
+  height: calc(100% - 168px);
+}
+
+div.at-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.at-item {
+  font-size: 80px;
+  color: #ebd6b7;
+  animation-name: focus-in-expand;
+  animation-duration: 5.0s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+}
+@keyframes focus-in-expand {
+  0%{
+    letter-spacing: -.5em;
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100%{
+    filter: blur(0);
+    opacity: 1;
+  }
 }

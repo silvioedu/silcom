@@ -1,6 +1,6 @@
 import { ProdutoComplemento } from "./produto-complemento.model";
 
-export interface ProdutoTipoPage {
+export interface ProdutoComplementoPage {
   content: ProdutoComplemento[],
   pageable: any,
   totalElements: number,

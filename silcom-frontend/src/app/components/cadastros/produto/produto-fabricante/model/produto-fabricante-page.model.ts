@@ -1,6 +1,6 @@
 import { ProdutoFabricante } from "./produto-fabricante.model";
 
-export interface ProdutoTipoPage {
+export interface ProdutoFabricantePage {
   content: ProdutoFabricante[],
   pageable: any,
   totalElements: number,
