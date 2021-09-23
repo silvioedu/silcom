@@ -8,14 +8,9 @@ import com.silcom.manager.api.assembler.input.ProdutoComplementoInputAssembler;
 import com.silcom.manager.api.assembler.output.ProdutoComplementoOutputAssembler;
 import com.silcom.manager.api.dto.input.ProdutoComplementoInputDTO;
 import com.silcom.manager.api.dto.output.ProdutoComplementoOutputDTO;
-import com.silcom.manager.domain.model.ProdutoComplemento;
 import com.silcom.manager.domain.service.ProdutoComplementoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,9 +36,8 @@ public class ProdutoComplementoController {
     private ProdutoComplementoInputAssembler produtoComplementoInputAssembler;
 
     @GetMapping
-    public Page<ProdutoComplementoOutputDTO> listAll(@PageableDefault(size=10) Pageable pageable) {
-        Page<ProdutoComplemento> produtoComplementosPage = produtoComplementoService.findAll(pageable);
-        return new PageImpl<>(produtoComplementoOutputAssembler.toColletionDTO(produtoComplementosPage.getContent()), pageable, produtoComplementosPage.getTotalElements());
+    public List<ProdutoComplementoOutputDTO> listAll() {
+        return produtoComplementoOutputAssembler.toColletionDTO(produtoComplementoService.findAll());
     }
 
     @GetMapping("/{id}")

@@ -1,1 +1,29 @@
-<p>ramo-update works!</p>
+<mat-card class="card">
+
+  <h1>Alterar Ramo</h1>
+
+  <form>
+
+      <mat-form-field>
+          <input matInput placeholder="Id" [(ngModel)]="ramo.id" name="id" disabled>
+      </mat-form-field>
+
+      <mat-form-field>
+          <input matInput placeholder="Nome" [(ngModel)]="ramo.nome" name="name" maxlength="60">
+      </mat-form-field>
+
+  </form>
+
+  <div class="actions">
+    <button mat-raised-button (click)="updateRamo()" color="primary">
+        Atualizar
+    </button>
+
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+  </div>
+
+</mat-card>
+
+

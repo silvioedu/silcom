@@ -8,14 +8,9 @@ import com.silcom.manager.api.assembler.input.ProdutoTipoInputAssembler;
 import com.silcom.manager.api.assembler.output.ProdutoTipoOutputAssembler;
 import com.silcom.manager.api.dto.input.ProdutoTipoInputDTO;
 import com.silcom.manager.api.dto.output.ProdutoTipoOutputDTO;
-import com.silcom.manager.domain.model.ProdutoTipo;
 import com.silcom.manager.domain.service.ProdutoTipoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,9 +36,8 @@ public class ProdutoTipoController {
     private ProdutoTipoInputAssembler produtoTipoInputAssembler;
 
     @GetMapping
-    public Page<ProdutoTipoOutputDTO> listAll(@PageableDefault(size=10) Pageable pageable) {
-        Page<ProdutoTipo> produtoTiposPage = produtoTipoService.findAll(pageable);
-        return new PageImpl<>(produtoTipoOutputAssembler.toColletionDTO(produtoTiposPage.getContent()), pageable, produtoTiposPage.getTotalElements());
+    public List<ProdutoTipoOutputDTO> listAll() {
+        return produtoTipoOutputAssembler.toColletionDTO(produtoTipoService.findAll());
     }
 
     @GetMapping("/{id}")

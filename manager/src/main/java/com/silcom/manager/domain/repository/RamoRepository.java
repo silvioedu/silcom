@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface RamoRepository extends PagingAndSortingRepository<Ramo, Long> {
  
     @Cacheable("ramos")
-    List<Ramo> findAll();
+    List<Ramo> findAllByOrderByIdAsc();
 
     List<Ramo> findByNomeContaining(String nome);
     boolean existsByNome(String nome);

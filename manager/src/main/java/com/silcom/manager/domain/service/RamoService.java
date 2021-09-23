@@ -11,8 +11,6 @@ import com.silcom.manager.domain.model.Ramo;
 import com.silcom.manager.domain.repository.RamoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,8 +23,8 @@ public class RamoService {
     @Autowired
     private RamoRepository ramoRepository;
 
-    public Page<Ramo> findAll(Pageable pageable) {
-        return ramoRepository.findAll(pageable);
+    public List<Ramo> findAll() {
+        return ramoRepository.findAllByOrderByIdAsc();
     }
 
     public Ramo findById(final Long id) {

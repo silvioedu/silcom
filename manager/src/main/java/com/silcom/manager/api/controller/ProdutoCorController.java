@@ -8,14 +8,9 @@ import com.silcom.manager.api.assembler.input.ProdutoCorInputAssembler;
 import com.silcom.manager.api.assembler.output.ProdutoCorOutputAssembler;
 import com.silcom.manager.api.dto.input.ProdutoCorInputDTO;
 import com.silcom.manager.api.dto.output.ProdutoCorOutputDTO;
-import com.silcom.manager.domain.model.ProdutoCor;
 import com.silcom.manager.domain.service.ProdutoCorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,9 +36,8 @@ public class ProdutoCorController {
     private ProdutoCorInputAssembler produtoCorInputAssembler;
 
     @GetMapping
-    public Page<ProdutoCorOutputDTO> listAll(@PageableDefault(size=10) Pageable pageable) {
-        Page<ProdutoCor> produtoCorsPage = produtoCorService.findAll(pageable);
-        return new PageImpl<>(produtoCorOutputAssembler.toColletionDTO(produtoCorsPage.getContent()), pageable, produtoCorsPage.getTotalElements());
+    public List<ProdutoCorOutputDTO> listAll() {
+        return produtoCorOutputAssembler.toColletionDTO(produtoCorService.findAll());
     }
 
     @GetMapping("/{id}")

@@ -1,22 +1,46 @@
-table {
-  margin-top: 30px;
-  padding: 20px 20px;
+table, .mat-form-field, .menu {
   width: calc(100% - 40px);
+}
+
+table {
+  padding: 5px 10px;
 }
 
 .edit {
   margin-right: 10px;
 }
 
-.edit > i {
+.edit em {
   color: #E6BB43;
 }
 
-.delete > i {
+.delete em {
   color: #F25A2E;
 }
 
 .mat-form-field {
+  padding: 5px 20px;
   font-size: 14px;
+}
+
+mat-label {
+  margin-left: 0px;
+}
+
+div {
+  margin: 20px;
+}
+
+.filter {
+  background-color: rgba(211, 211, 211, .3);
+}
+
+h1 {
   width: 100%;
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
 }

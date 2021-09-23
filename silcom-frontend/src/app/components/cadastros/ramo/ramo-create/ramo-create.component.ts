@@ -1,4 +1,9 @@
+import { RamoInput } from './../model/ramo-input.model';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RamoService } from '../service/ramo.service';
+import { FormsModule }   from '@angular/forms';
+import { MessageService } from 'src/app/components/shared/message.service';
 
 @Component({
   selector: 'app-ramo-create',
@@ -7,9 +12,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RamoCreateComponent implements OnInit {
 
-  constructor() { }
+  ramo: RamoInput = {
+    nome: ''
+  }
+
+  constructor(private ramoService: RamoService,
+    private router: Router,
+    private messageService: MessageService) {
+      // intentionally unscoped
+
+  }
 
   ngOnInit(): void {
+    // intentionally unscoped
+  }
+
+  createRamo(): void{
+    this.ramoService.create(this.ramo).subscribe(() => {
+      this.messageService.showMessage('Ramo criado com sucesso')
+      this.router.navigate(['/ramos'])
+    })
+  }
+
+  cancel(): void{
+    this.router.navigate(['/ramos'])
   }
 
 }

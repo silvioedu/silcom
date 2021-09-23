@@ -13,8 +13,6 @@ import com.silcom.manager.domain.repository.ProdutoComplementoRepository;
 import com.silcom.manager.domain.repository.ProdutoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -31,8 +29,8 @@ public class ProdutoComplementoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public Page<ProdutoComplemento> findAll(Pageable pageable) {
-        return produtoComplementoRepository.findAll(pageable);
+    public List<ProdutoComplemento> findAll() {
+        return produtoComplementoRepository.findAllByOrderByIdAsc();
     }
 
     public ProdutoComplemento findById(final Long id) {

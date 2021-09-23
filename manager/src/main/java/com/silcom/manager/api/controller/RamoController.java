@@ -8,14 +8,9 @@ import com.silcom.manager.api.assembler.input.RamoInputAssembler;
 import com.silcom.manager.api.assembler.output.RamoOutputAssembler;
 import com.silcom.manager.api.dto.input.RamoInputDTO;
 import com.silcom.manager.api.dto.output.RamoOutputDTO;
-import com.silcom.manager.domain.model.Ramo;
 import com.silcom.manager.domain.service.RamoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,9 +36,8 @@ public class RamoController {
     private RamoInputAssembler ramoInputAssembler;
 
     @GetMapping
-    public Page<RamoOutputDTO> listAll(@PageableDefault(size=10) Pageable pageable) {
-        Page<Ramo> ramosPage = ramoService.findAll(pageable);
-        return new PageImpl<>(ramoOutputAssembler.toColletionDTO(ramosPage.getContent()), pageable, ramosPage.getTotalElements());
+    public List<RamoOutputDTO> listAll() {
+        return ramoOutputAssembler.toColletionDTO(ramoService.findAll());
     }
 
     @GetMapping("/{id}")

@@ -1,19 +1,16 @@
 package com.silcom.manager.api.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import com.silcom.manager.api.assembler.input.ProdutoInputAssembler;
 import com.silcom.manager.api.assembler.output.ProdutoOutputAssembler;
 import com.silcom.manager.api.dto.input.ProdutoInputDTO;
 import com.silcom.manager.api.dto.output.ProdutoOutputDTO;
-import com.silcom.manager.domain.model.Produto;
 import com.silcom.manager.domain.service.ProdutoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,9 +36,8 @@ public class ProdutoController {
     private ProdutoInputAssembler produtoInputAssembler;
 
     @GetMapping
-    public Page<ProdutoOutputDTO> listAll(@PageableDefault(size=10) Pageable pageable) {
-        Page<Produto> produtosPage = produtoService.findAll(pageable);
-        return new PageImpl<>(produtoOutputAssembler.toColletionDTO(produtosPage.getContent()), pageable, produtosPage.getTotalElements());
+    public List<ProdutoOutputDTO> listAll() {
+        return produtoOutputAssembler.toColletionDTO(produtoService.findAll());
     }
 
     @GetMapping("/{id}")

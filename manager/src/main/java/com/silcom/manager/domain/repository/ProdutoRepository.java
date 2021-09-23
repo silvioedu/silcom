@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface ProdutoRepository extends PagingAndSortingRepository<Produto, Long> {
  
     @Cacheable("produtos")
-    List<Produto> findAll();
+    List<Produto> findAllByOrderByIdAsc();
 
     boolean existsByCodigoIgnoreCase(String codigo);
 

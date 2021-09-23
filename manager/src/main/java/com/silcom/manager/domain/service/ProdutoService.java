@@ -1,6 +1,7 @@
 package com.silcom.manager.domain.service;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -10,8 +11,6 @@ import com.silcom.manager.domain.model.Produto;
 import com.silcom.manager.domain.repository.ProdutoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -38,8 +37,8 @@ public class ProdutoService {
     @Autowired
     private ProdutoFabricanteService produtoFabricanteService;
 
-    public Page<Produto> findAll(Pageable pageable) {
-        return produtoRepository.findAll(pageable);
+    public List<Produto> findAll() {
+        return produtoRepository.findAllByOrderByIdAsc();
     }
 
     public Produto findById(final Long id) {

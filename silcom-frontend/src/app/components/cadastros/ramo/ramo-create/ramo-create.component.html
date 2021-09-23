@@ -1,1 +1,23 @@
-<p>ramo-create works!</p>
+<mat-card class="card">
+
+  <h1>Adicionar Ramo</h1>
+
+  <form>
+      <mat-form-field>
+          <input type="text" [(ngModel)]="ramo.nome" matInput placeholder="Nome" name="nome" maxlength="60">
+      </mat-form-field>
+    </form>
+
+  <div class="actions">
+    <button mat-raised-button (click)="createRamo()" color="primary">
+        Salvar
+    </button>
+
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+  </div>
+
+</mat-card>
+
+
