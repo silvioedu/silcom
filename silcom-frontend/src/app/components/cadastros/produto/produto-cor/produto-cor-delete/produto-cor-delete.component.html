@@ -1,0 +1,38 @@
+<mat-card class="card">
+
+  <h1>Excluir cor de produto</h1>
+
+  <form>
+
+    <mat-form-field>
+        <input class="field" matInput placeholder="Id" [value]="produtoCor.id" name="id" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input class="field" matInput placeholder="Nome" [value]="produtoCor.nome" name="nome" maxlength="20" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input class="field" matInput placeholder="Sigla" [value]="produtoCor.sigla" name="sigla" maxlength="01" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input class="field" matInput placeholder="Data criação" [value]="produtoCor.dataCriacao * 1000 | date: 'yyyy-MM-dd HH:mm:ss'" name="dataCriacao" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input class="field" matInput placeholder="Data Atualização" [value]="produtoCor.dataAtualizacao * 1000 | date: 'yyyy-MM-dd HH:mm:ss'" name="dataAtualizacao" disabled>
+    </mat-form-field>
+
+    <div class="actions">
+      <button type="button" mat-raised-button (click)="delete()" color="warn">
+        Excluir
+      </button>
+
+      <button type="button" mat-raised-button (click)="cancel()">
+          Cancelar
+      </button>
+    </div>
+    </form>
+
+</mat-card>
