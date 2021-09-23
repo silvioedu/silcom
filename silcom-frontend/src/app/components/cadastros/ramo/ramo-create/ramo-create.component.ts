@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RamoService } from '../service/ramo.service';
 import { FormsModule }   from '@angular/forms';
-import { MessageService } from 'src/app/components/shared/message.service';
+import { MessageService } from 'src/app/components/shared/service/message.service';
 
 @Component({
   selector: 'app-ramo-create',
@@ -20,7 +20,6 @@ export class RamoCreateComponent implements OnInit {
     private router: Router,
     private messageService: MessageService) {
       // intentionally unscoped
-
   }
 
   ngOnInit(): void {

@@ -1,3 +1,4 @@
+import { HomeComponent } from './views/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -5,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'ramos'
+    component: HomeComponent
   },
   {
     path: 'ramos',
