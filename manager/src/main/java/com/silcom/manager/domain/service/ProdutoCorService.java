@@ -65,7 +65,7 @@ public class ProdutoCorService {
 
     @Transactional
     public void delete(final Long id) {
-        if (produtoRepository.existsByTipoId(id)) {
+        if (produtoRepository.existsByCorId(id)) {
             throw new ResourceInUseException(
                 String.format(ID_IN_USE, id));
         }

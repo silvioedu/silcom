@@ -65,7 +65,7 @@ public class ProdutoFabricanteService {
 
     @Transactional
     public void delete(final Long id) {
-        if (produtoRepository.existsByTipoId(id)) {
+        if (produtoRepository.existsByFabricanteId(id)) {
             throw new ResourceInUseException(
                 String.format(ID_IN_USE, id));
         }

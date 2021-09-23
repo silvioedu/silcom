@@ -10,6 +10,7 @@ delete from tblprodutotipo;
 
 alter sequence tblramo_seq restart with 25;
 alter sequence tblproduto_seq restart with 97;
+alter sequence tblprodutocomplemento_seq restart with 18;
 alter sequence tblprodutocor_seq restart with 12;
 alter sequence tblprodutodetalhe_seq restart with 17;
 alter sequence tblprodutofabricante_seq restart with 20;
