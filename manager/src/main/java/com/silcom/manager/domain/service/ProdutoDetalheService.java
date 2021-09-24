@@ -30,7 +30,7 @@ public class ProdutoDetalheService {
     private ProdutoRepository produtoRepository;
 
     public List<ProdutoDetalhe> findAll() {
-        return produtoDetalheRepository.findAllByOrderByIdAsc();
+        return produtoDetalheRepository.findAllByOrderByNomeAsc();
     }
 
     public ProdutoDetalhe findById(final Long id) {

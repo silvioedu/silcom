@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface ProdutoTipoRepository extends PagingAndSortingRepository<ProdutoTipo, Long> {
  
     @Cacheable("produtotipos")
-    List<ProdutoTipo> findAllByOrderByIdAsc();
+    List<ProdutoTipo> findAllByOrderByNomeAsc();
 
     List<ProdutoTipo> findByNomeContainingIgnoreCase(String nome);
     boolean existsByNomeIgnoreCase(String nome);

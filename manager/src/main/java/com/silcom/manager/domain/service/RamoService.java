@@ -24,7 +24,7 @@ public class RamoService {
     private RamoRepository ramoRepository;
 
     public List<Ramo> findAll() {
-        return ramoRepository.findAllByOrderByIdAsc();
+        return ramoRepository.findAllByOrderByNomeAsc();
     }
 
     public Ramo findById(final Long id) {

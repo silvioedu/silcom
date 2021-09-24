@@ -30,7 +30,7 @@ public class ProdutoTipoService {
     private ProdutoRepository produtoRepository;
 
     public List<ProdutoTipo> findAll() {
-        return produtoTipoRepository.findAllByOrderByIdAsc();
+        return produtoTipoRepository.findAllByOrderByNomeAsc();
     }
 
     public ProdutoTipo findById(final Long id) {

@@ -48,3 +48,8 @@ h1 {
   display: flex;
   justify-content: flex-end;
 }
+
+.not-found {
+  text-align: center;
+  font-style: italic;
+}

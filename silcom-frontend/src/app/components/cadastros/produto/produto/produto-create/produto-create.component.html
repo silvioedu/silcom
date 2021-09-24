@@ -1,0 +1,73 @@
+<mat-card class="card">
+
+  <h1>Adicionar produto</h1>
+
+  <form>
+      <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select [(ngModel)]="selected.tipo" name="tipoId">
+          <mat-option *ngFor="let produtoTipo of cadastro.tipos" [value]="produtoTipo.id">
+            {{ produtoTipo.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cor</mat-label>
+        <mat-select [(ngModel)]="selected.cor" name="corId">
+          <mat-option *ngFor="let produtoCor of cadastro.cores" [value]="produtoCor.id">
+            {{ produtoCor.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Complemento</mat-label>
+        <mat-select [(ngModel)]="selected.complemento" name="complementoId">
+          <mat-option *ngFor="let produtoComplemento of cadastro.complementos" [value]="produtoComplemento.id">
+            {{ produtoComplemento.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Detalhe</mat-label>
+        <mat-select [(ngModel)]="selected.detalhe" name="detalheId">
+          <mat-option *ngFor="let produtoDetalhe of cadastro.detalhes" [value]="produtoDetalhe.id">
+            {{ produtoDetalhe.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Fabricante</mat-label>
+        <mat-select [(ngModel)]="selected.fabricante" name="fabricanteId">
+          <mat-option *ngFor="let produtoFabricante of cadastro.fabricantes" [value]="produtoFabricante.id">
+            {{ produtoFabricante.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+          <input type="text" [(ngModel)]="selected.folder" matInput placeholder="Folder" name="folder" maxlength="07">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" [(ngModel)]="selected.preco" matInput placeholder="Preco" name="preco">
+      </mat-form-field>
+
+    </form>
+
+  <div class="actions">
+    <button type="button" mat-raised-button (click)="create()" color="primary">
+        Salvar
+    </button>
+
+    <button type="button" mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+  </div>
+
+</mat-card>
+
+

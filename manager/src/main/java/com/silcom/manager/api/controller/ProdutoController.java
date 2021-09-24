@@ -5,8 +5,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.silcom.manager.api.assembler.input.ProdutoInputAssembler;
+import com.silcom.manager.api.assembler.output.ProdutoIdOutputAssembler;
 import com.silcom.manager.api.assembler.output.ProdutoOutputAssembler;
 import com.silcom.manager.api.dto.input.ProdutoInputDTO;
+import com.silcom.manager.api.dto.output.ProdutoIdOutputDTO;
 import com.silcom.manager.api.dto.output.ProdutoOutputDTO;
 import com.silcom.manager.domain.service.ProdutoService;
 
@@ -35,6 +37,9 @@ public class ProdutoController {
     @Autowired
     private ProdutoInputAssembler produtoInputAssembler;
 
+    @Autowired
+    private ProdutoIdOutputAssembler produtoIdOutputAssembler;
+
     @GetMapping
     public List<ProdutoOutputDTO> listAll() {
         return produtoOutputAssembler.toColletionDTO(produtoService.findAll());
@@ -45,10 +50,16 @@ public class ProdutoController {
         return produtoOutputAssembler.toDTO(produtoService.findById(id));
     }
 
+    @GetMapping("/{id}/id")
+    public ProdutoIdOutputDTO findIdById(@PathVariable(required = true) Long id) {
+        return produtoIdOutputAssembler.toDTO(produtoService.findById(id));
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ProdutoOutputDTO insert(@RequestBody @Valid ProdutoInputDTO produtoInputDTO) {
         var produto = produtoInputAssembler.toModel(produtoInputDTO);
+        System.out.println(produtoInputDTO);
         return produtoOutputAssembler.toDTO(produtoService.insert(produto));
     }
 
