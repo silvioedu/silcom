@@ -10,10 +10,13 @@
 <mat-menu #cadastros="matMenu">
   <button mat-menu-item [matMenuTriggerFor]="cadastrosProdutos">Produtos</button>
   <a routerLink="/cadastros/ramos"><button mat-menu-item>Ramos</button></a>
+  <a routerLink="/cadastros/contatos-tipos"><button mat-menu-item>Tipos de contatos</button></a>
+  <a routerLink="/cadastros/documentos-tipos"><button mat-menu-item>Tipos de documentos</button></a>
 </mat-menu>
 
 <mat-menu #cadastrosProdutos="matMenu">
   <a routerLink="/cadastros/produtos"><button mat-menu-item>Produtos</button></a>
+  <hr>
   <a routerLink="/cadastros/produtos/complementos"><button mat-menu-item>Complementos</button></a>
   <a routerLink="/cadastros/produtos/cores"><button mat-menu-item>Cores</button></a>
   <a routerLink="/cadastros/produtos/detalhes"><button mat-menu-item>Detalhes</button></a>

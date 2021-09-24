@@ -1,0 +1,55 @@
+table, .mat-form-field, .menu {
+  width: calc(100% - 40px);
+}
+
+table {
+  padding: 5px 10px;
+}
+
+tr.element-row:hover {
+  background: whitesmoke;
+}
+
+.edit {
+  margin-right: 10px;
+}
+
+.edit em {
+  color: #E6BB43;
+}
+
+.delete em {
+  color: #F25A2E;
+}
+
+.mat-form-field {
+  padding: 5px 20px;
+  font-size: 14px;
+}
+
+mat-label {
+  margin-left: 0px;
+}
+
+div {
+  margin: 20px;
+}
+
+.filter {
+  background-color: whitesmoke;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.not-found {
+  text-align: center;
+  font-style: italic;
+}

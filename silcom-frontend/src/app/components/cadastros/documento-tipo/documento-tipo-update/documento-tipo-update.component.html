@@ -1,0 +1,29 @@
+<mat-card class="card">
+
+  <h1>Alterar tipo de documento</h1>
+
+  <form>
+
+      <mat-form-field>
+          <input matInput placeholder="Id" [(ngModel)]="documentoTipo.id" name="id" disabled>
+      </mat-form-field>
+
+      <mat-form-field>
+          <input matInput placeholder="Nome" [(ngModel)]="documentoTipo.nome" name="name" maxlength="20">
+      </mat-form-field>
+
+  </form>
+
+  <div class="actions">
+    <button type="button" mat-raised-button (click)="update()" color="primary">
+        Atualizar
+    </button>
+
+    <button type="button" mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+  </div>
+
+</mat-card>
+
+

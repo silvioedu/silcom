@@ -1,0 +1,23 @@
+<mat-card class="card">
+
+  <h1>Adicionar tipo de contato</h1>
+
+  <form>
+      <mat-form-field>
+          <input type="text" [(ngModel)]="contatoTipo.nome" matInput placeholder="Nome" name="nome" maxlength="20">
+      </mat-form-field>
+    </form>
+
+  <div class="actions">
+    <button type="button" mat-raised-button (click)="create()" color="primary">
+        Salvar
+    </button>
+
+    <button type="button" mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+  </div>
+
+</mat-card>
+
+

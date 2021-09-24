@@ -1,12 +1,12 @@
 delete from tblramo;
-
 delete from tblproduto;
 delete from tblprodutocomplemento;
 delete from tblprodutocor;
 delete from tblprodutodetalhe;
 delete from tblprodutofabricante;
 delete from tblprodutotipo;
-
+delete from tblcontatotipo;
+delete from tbldocumentotipo;
 
 alter sequence tblramo_seq restart with 25;
 alter sequence tblproduto_seq restart with 97;
@@ -15,6 +15,8 @@ alter sequence tblprodutocor_seq restart with 12;
 alter sequence tblprodutodetalhe_seq restart with 17;
 alter sequence tblprodutofabricante_seq restart with 20;
 alter sequence tblprodutotipo_seq restart with 13;
+alter sequence tblcontatotipo_seq restart with 6;
+alter sequence tbldocumentotipo_seq restart with 6;
 
 
 insert into tblramo values 
@@ -180,3 +182,17 @@ insert into tblproduto VALUES
 (93,5,5,14,6,13,'HPG010','E29', 80, now() at time zone 'utc', now() at time zone 'utc'),
 (95,10,10,15,16,18,'FFBF00','E30', 40, now() at time zone 'utc', now() at time zone 'utc'),
 (96,10,10,15,16,18,'FFBFFF','EFF', 40.41, now() at time zone 'utc', now() at time zone 'utc');
+
+insert into tblcontatotipo values 
+(1, 'Telefone Comercial', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 'Telefone Celular', now() at time zone 'utc', now() at time zone 'utc'),
+(3, 'Email', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 'Apenas para Tst IT', now() at time zone 'utc', now() at time zone 'utc'),
+(5, 'Apenas para Tst IT2', now() at time zone 'utc', now() at time zone 'utc');
+
+insert into tbldocumentotipo values 
+(1, 'CPF', now() at time zone 'utc', now() at time zone 'utc'),
+(2, 'CNPJ', now() at time zone 'utc', now() at time zone 'utc'),
+(3, 'Inscrição Estadual', now() at time zone 'utc', now() at time zone 'utc'),
+(4, 'Apenas para Tst IT', now() at time zone 'utc', now() at time zone 'utc'),
+(5, 'Apenas para Tst IT2', now() at time zone 'utc', now() at time zone 'utc');

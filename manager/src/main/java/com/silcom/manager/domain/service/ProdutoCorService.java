@@ -20,7 +20,7 @@ public class ProdutoCorService {
     
     private static final String ID_IN_USE = "Produto cor id %d em uso";
     private static final String ALREADY_EXISTS = "Produto cor nome '%s' ou sigla '%s' já existe";
-    private static final String NOME_NOT_FOUND = "Não foram encontrados cpres de produto com o nome '%s'";
+    private static final String NOME_NOT_FOUND = "Não foram encontrados cores de produto com o nome '%s'";
     private static final String ID_NOT_FOUND = "Produto cor id %d não encontrado";
 
     @Autowired
