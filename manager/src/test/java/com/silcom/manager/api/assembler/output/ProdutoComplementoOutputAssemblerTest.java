@@ -20,20 +20,20 @@ class ProdutoComplementoOutputAssemblerTest {
     private ProdutoComplementoOutputAssembler assembler;
 
     @Test
-    void shouldConvertProdutoComplementoOutput_inProdutoComplementoModel() {
+    void shouldConvertProdutoComplementoModel_inProdutoComplementoOutput() {
         ProdutoComplemento model = ProdutoComplementoMock.getInstance();
         ProdutoComplementoOutputDTO output = assembler.toDTO(model);
         assertValues(model, output);
     }
 
     @Test
-    void shouldConvertListProdutoComplementoOutput_inListProdutoComplementoModel() {
+    void shouldConvertListProdutoComplementoModel_inListProdutoComplementoOutput() {
         int max = 10;
         List<ProdutoComplemento> modelList = new ArrayList<>();
 
         for(int i = 0; i < max; i++) {
-            ProdutoComplemento ramo = ProdutoComplementoMock.getInstance();
-            modelList.add(ramo);
+            ProdutoComplemento model = ProdutoComplementoMock.getInstance();
+            modelList.add(model);
         }
 
         List<ProdutoComplementoOutputDTO> outputList = assembler.toColletionDTO(modelList);

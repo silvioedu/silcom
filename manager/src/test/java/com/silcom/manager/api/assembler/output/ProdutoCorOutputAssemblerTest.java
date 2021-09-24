@@ -20,20 +20,20 @@ class ProdutoCorOutputAssemblerTest {
     private ProdutoCorOutputAssembler assembler;
 
     @Test
-    void shouldConvertProdutoCorOutput_inProdutoCorModel() {
+    void shouldConvertProdutoCorModel_inProdutoCorOutput() {
         ProdutoCor model = ProdutoCorMock.getInstance();
         ProdutoCorOutputDTO output = assembler.toDTO(model);
         assertValues(model, output);
     }
 
     @Test
-    void shouldConvertListProdutoCorOutput_inListProdutoCorModel() {
+    void shouldConvertListProdutoCorModel_inListProdutoCorOutput() {
         int max = 10;
         List<ProdutoCor> modelList = new ArrayList<>();
 
         for(int i = 0; i < max; i++) {
-            ProdutoCor ramo = ProdutoCorMock.getInstance();
-            modelList.add(ramo);
+            ProdutoCor model = ProdutoCorMock.getInstance();
+            modelList.add(model);
         }
 
         List<ProdutoCorOutputDTO> outputList = assembler.toColletionDTO(modelList);

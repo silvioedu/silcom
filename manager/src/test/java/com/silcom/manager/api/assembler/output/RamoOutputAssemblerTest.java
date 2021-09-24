@@ -20,20 +20,20 @@ class RamoOutputAssemblerTest {
     private RamoOutputAssembler assembler;
 
     @Test
-    void shouldConvertRamoOutput_inRamoModel() {
+    void shouldConvertRamoModel_inRamoOutput() {
         Ramo model = RamoMock.getInstance();
         RamoOutputDTO output = assembler.toDTO(model);
         assertValues(model, output);
     }
 
     @Test
-    void shouldConvertListRamoOutput_inListRamoModel() {
+    void shouldConvertListRamoModel_inListRamoOutput() {
         int max = 10;
         List<Ramo> modelList = new ArrayList<>();
 
         for(int i = 0; i < max; i++) {
-            Ramo ramo = RamoMock.getInstance();
-            modelList.add(ramo);
+            Ramo model = RamoMock.getInstance();
+            modelList.add(model);
         }
 
         List<RamoOutputDTO> outputList = assembler.toColletionDTO(modelList);

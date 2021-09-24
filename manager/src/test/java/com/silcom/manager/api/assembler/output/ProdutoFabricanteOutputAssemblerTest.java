@@ -20,20 +20,20 @@ class ProdutoFabricanteOutputAssemblerTest {
     private ProdutoFabricanteOutputAssembler assembler;
 
     @Test
-    void shouldConvertProdutoFabricanteOutput_inProdutoFabricanteModel() {
+    void shouldConvertProdutoFabricanteModel_inProdutoFabricanteOutput() {
         ProdutoFabricante model = ProdutoFabricanteMock.getInstance();
         ProdutoFabricanteOutputDTO output = assembler.toDTO(model);
         assertValues(model, output);
     }
 
     @Test
-    void shouldConvertListProdutoFabricanteOutput_inListProdutoFabricanteModel() {
+    void shouldConvertListProdutoFabricanteModel_inListProdutoFabricanteOutput() {
         int max = 10;
         List<ProdutoFabricante> modelList = new ArrayList<>();
 
         for(int i = 0; i < max; i++) {
-            ProdutoFabricante ramo = ProdutoFabricanteMock.getInstance();
-            modelList.add(ramo);
+            ProdutoFabricante model = ProdutoFabricanteMock.getInstance();
+            modelList.add(model);
         }
 
         List<ProdutoFabricanteOutputDTO> outputList = assembler.toColletionDTO(modelList);
