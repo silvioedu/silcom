@@ -15,8 +15,10 @@ export class ErrorHandlerService {
 
   errorHandler(e: HttpErrorResponse): Observable<any> {
     const erro: ErrorMesssage = e.error
+    console.log(erro)
 
     const fields = erro.fields?.map(f => f.userMessage).reduce((acm, act) => acm.concat("; ").concat(act)) || ''
+    console.log(fields)
 
     const msg = `Ocorreu um erro ${erro.status}-${erro.detail}. ${fields}`
 

@@ -16,21 +16,26 @@ import lombok.ToString;
 public class ProdutoInputDTO {
     
     @NotNull
+    @Positive
     private Long tipoId;
 
     @NotNull
+    @Positive
     private Long corId;
 
     @NotNull
+    @Positive
     private Long detalheId;
 
     @NotNull
+    @Positive
     private Long complementoId;
 
     @NotNull
+    @Positive
     private Long fabricanteId;
 
-    @Size(max = 5)
+    @Size(max=07)
     private String folder;
 
     @NotNull
