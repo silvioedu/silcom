@@ -9,15 +9,15 @@
 
 <mat-menu #cadastros="matMenu">
   <button mat-menu-item [matMenuTriggerFor]="cadastrosProdutos">Produtos</button>
-  <button mat-menu-item><a routerLink="/cadastros/ramos">Ramos</a></button>
+  <a routerLink="/cadastros/ramos"><button mat-menu-item>Ramos</button></a>
 </mat-menu>
 
 <mat-menu #cadastrosProdutos="matMenu">
-  <button mat-menu-item><a routerLink="/cadastros/produtos">Produtos</a></button>
-  <button mat-menu-item><a routerLink="/cadastros/produtos/complementos">Complementos</a></button>
-  <button mat-menu-item><a routerLink="/cadastros/produtos/cores">Cores</a></button>
-  <button mat-menu-item><a routerLink="/cadastros/produtos/detalhes">Detalhes</a></button>
-  <button mat-menu-item><a routerLink="/cadastros/produtos/fabricantes">Fabricantes</a></button>
-  <button mat-menu-item><a routerLink="/cadastros/produtos/tipos">Tipos</a></button>
+  <a routerLink="/cadastros/produtos"><button mat-menu-item>Produtos</button></a>
+  <a routerLink="/cadastros/produtos/complementos"><button mat-menu-item>Complementos</button></a>
+  <a routerLink="/cadastros/produtos/cores"><button mat-menu-item>Cores</button></a>
+  <a routerLink="/cadastros/produtos/detalhes"><button mat-menu-item>Detalhes</button></a>
+  <a routerLink="/cadastros/produtos/fabricantes"><button mat-menu-item>Fabricantes</button></a>
+  <a routerLink="/cadastros/produtos/tipos"><button mat-menu-item>Tipos</button></a>
 </mat-menu>
 
